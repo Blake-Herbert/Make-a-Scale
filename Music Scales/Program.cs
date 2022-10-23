@@ -1,52 +1,29 @@
-﻿string[] allDiatonicNotes = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B "};
-
-int[] majorScaleIntervals = { 2, 2, 1, 2, 2, 2, 1 };
-int[] minorScaleIntervals = { 2, 1, 2, 2, 1, 2, 2 };
-
-int selectedKey = 0;
+﻿string[] allDiatonicNotes = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B ", "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
 
 Console.WriteLine("Major or Minor?");
-string selectedMode = Console.ReadLine();
+int selectedKey = 0;
+string selectedMode = Console.ReadLine().ToLower();
 
-switch(selectedMode)
+switch (selectedMode)
 {
-    case "Major":
+    case "major":
+        Console.WriteLine("C Major Scale: ");
 
-        Console.WriteLine("Major");
-
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += majorScaleIntervals[0];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += majorScaleIntervals[1];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += majorScaleIntervals[2];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += majorScaleIntervals[3];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += majorScaleIntervals[4];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += majorScaleIntervals[5];
-        Console.Write(allDiatonicNotes[selectedKey]);
-        selectedKey = majorScaleIntervals[0];
-        Console.Write(allDiatonicNotes[selectedKey]);
+        int[] majorScaleIntervals = { 0, 2, 4, 5, 7, 9, 11, 12 };
+        foreach (int interval in majorScaleIntervals)
+        {
+            Console.Write(allDiatonicNotes[selectedKey + interval]);
+        }
         break;
-    case "Minor":
-        Console.WriteLine("Minor");
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += minorScaleIntervals[0];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += minorScaleIntervals[1];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += minorScaleIntervals[2];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += minorScaleIntervals[3];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += minorScaleIntervals[4];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey += minorScaleIntervals[5];
-        Console.Write(allDiatonicNotes[selectedKey]);
-            selectedKey = minorScaleIntervals[0];
-        Console.Write(allDiatonicNotes[selectedKey]);
-        break ;
-}
 
+    case "minor":
+        Console.Write("C Minor Scale: ");
+
+        int[] minorScaleIntervals = { 0, 2, 3, 5, 7, 8, 10, 12 };
+        foreach (int interval in minorScaleIntervals)
+        {
+            Console.Write(allDiatonicNotes[selectedKey + interval]);
+        }
+
+        break;
+}
