@@ -1,88 +1,79 @@
 ﻿string[] allDiatonicNotes = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B ", 
                               "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
 
-Console.WriteLine("Select a key");
-int selectedKey = 0;
+Console.WriteLine("Select scale's tonic:");
+int selectedTonic = 0;
 
 switch (Console.ReadLine().ToLower())
 {
     case "c":
-        selectedKey = 0;
+        selectedTonic = 0;
         break;
     case "c#":
-        selectedKey = 1;
-        break;
     case "db":
-        selectedKey = 1;
+        selectedTonic = 1;
         break;
     case "d":
-        selectedKey = 2;
+        selectedTonic = 2;
         break;
     case "d#":
-        selectedKey = 3;
-        break;
     case "eb":
-        selectedKey = 3;
+        selectedTonic = 3;
         break;
     case "e":
-        selectedKey = 4;
+        selectedTonic = 4;
         break;
     case "f":
-        selectedKey = 5;
+        selectedTonic = 5;
         break;
     case "f#":
-        selectedKey = 6;
-        break;
     case "gb":
-        selectedKey = 6;
+        selectedTonic = 6;
         break;
     case "g":
-        selectedKey = 7;
+        selectedTonic = 7;
         break;
     case "g#":
-        selectedKey = 8;
-        break;
     case "ab":
-        selectedKey = 8;
+        selectedTonic = 8;
         break;
     case "a":
-        selectedKey = 9;
+        selectedTonic = 9;
         break;
     case "a#":
-        selectedKey = 10;
-        break;
     case "bb":
-        selectedKey = 10;
+        selectedTonic = 10;
         break;
     case "b":
-        selectedKey = 11;
+        selectedTonic = 11;
         break;
 }
 
-Console.WriteLine("Major or Minor?");
+Console.WriteLine("Major or Minor scale?");
 switch (Console.ReadLine().ToLower())
 {
     case "major":
-        Console.WriteLine("C Major Scale: ");
+        Console.WriteLine( allDiatonicNotes[selectedTonic] + "Major Scale: ");
 
         int[] majorScaleIntervals = { 0, 2, 4, 5, 7, 9, 11, 12 };
         foreach (int interval in majorScaleIntervals)
         {
-            Console.Write(allDiatonicNotes[selectedKey + interval]);
+            Console.Write(allDiatonicNotes[selectedTonic + interval]);
         }
         break;
 
     case "minor":
-        Console.Write("C Minor Scale: ");
-
+        Console.Write(allDiatonicNotes[selectedTonic] + "Minor Scale: ");
         int[] minorScaleIntervals = { 0, 2, 3, 5, 7, 8, 10, 12 };
         foreach (int interval in minorScaleIntervals)
         {
-            Console.Write(allDiatonicNotes[selectedKey + interval]);
+            Console.Write(allDiatonicNotes[selectedTonic + interval]);
         }
 
         break;
         default:
-        Console.Write("Ooops");
+        Console.Write("Invalid mode selection");
         break;
 }
+Console.WriteLine();
+Console.WriteLine("______________________________________");
