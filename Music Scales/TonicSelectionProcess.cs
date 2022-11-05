@@ -10,7 +10,7 @@ namespace Music_Scales
     {
         public int SelectTonic()
         {
-            Console.WriteLine("Select scale's tonic:");
+            Console.WriteLine("Select first note of the scale:");
 
             int selectedTonic = 0;
 

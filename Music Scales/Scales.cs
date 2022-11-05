@@ -28,6 +28,7 @@ namespace Music_Scales
 
         public static void MinorScale(int selectedTonic)
         {
+            
             Console.WriteLine("Minor Scale in the key of " + allDiatonicNotes[selectedTonic] + ": ");
 
             int[] minorScaleIntervals = { 0, 2, 3, 5, 7, 8, 10, 12 };

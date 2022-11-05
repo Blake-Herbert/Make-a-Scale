@@ -1,24 +1,43 @@
-﻿using Music_Scales;
-
-TonicSelectionProcess Tonic = new TonicSelectionProcess();
-int selectedTonic = Tonic.SelectTonic();
+﻿using System.Reflection;
+using Music_Scales;
 
 
-Console.WriteLine("Major or Minor scale?");
-
-
-switch (Console.ReadLine().ToLower())
+int TonicMenu()
 {
-    case "major":       
-        Scales.MajorScale(selectedTonic);
-        break;
+    string mainMenuPrompt = "Select the starting note for your scale";
+    string[] mainMenuOptions = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
+    Menu mainMenu = new Menu(mainMenuPrompt, mainMenuOptions);
+    mainMenu.DisplayOptions();
+    int selectedIndex = mainMenu.Run();
 
-    case "minor":
-        Scales.MinorScale(selectedTonic);
-        break;
-    default:
-        Console.WriteLine("Mode not recognized");
-        break;
+    return selectedIndex;
+    
+}
+
+int selectedTonic = TonicMenu();
+
+ModeMenu();
+
+void ModeMenu()
+{
+    string modeSelectionPrompt = "Which mode would you like?";
+    string[] modeSelectionOptions = { "Major", "Minor" };
+    Menu modesMenu = new Menu(modeSelectionPrompt, modeSelectionOptions);
+    modesMenu.DisplayOptions();
+    int selectMode = modesMenu.Run();
+
+    switch (selectMode)
+    {
+        case 0:
+            Scales.MajorScale(selectedTonic);
+            break;
+        case 1:
+            Scales.MinorScale(selectedTonic);
+            break;
+        default:
+            Console.WriteLine("Try again");
+            break;
+    }
 }
 
 Console.WriteLine();
