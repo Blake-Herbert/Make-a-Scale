@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace Music_Scales
 {
@@ -15,26 +16,26 @@ namespace Music_Scales
 
         public static void MajorScale(int selectedTonic)
         {
-            
-            Console.WriteLine("Major Scale in the key of " + allDiatonicNotes[selectedTonic] + ": ");
+            Clear();
+            WriteLine("Major Scale in the key of " + allDiatonicNotes[selectedTonic] + ": ");
 
             int[] majorScaleIntervals = { 0, 2, 4, 5, 7, 9, 11, 12 };
             foreach (int interval in majorScaleIntervals)
             {
-                Console.Write(allDiatonicNotes[selectedTonic + interval]);
+                Write(allDiatonicNotes[selectedTonic + interval]);
             }
         }
         
 
         public static void MinorScale(int selectedTonic)
         {
-            
-            Console.WriteLine("Minor Scale in the key of " + allDiatonicNotes[selectedTonic] + ": ");
+            Clear();
+            WriteLine("Minor Scale in the key of " + allDiatonicNotes[selectedTonic] + ": ");
 
             int[] minorScaleIntervals = { 0, 2, 3, 5, 7, 8, 10, 12 };
             foreach (int interval in minorScaleIntervals)
             {
-                Console.Write(allDiatonicNotes[selectedTonic + interval]);
+                Write(allDiatonicNotes[selectedTonic + interval]);
             }
         }
     }
