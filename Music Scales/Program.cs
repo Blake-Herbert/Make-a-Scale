@@ -68,7 +68,7 @@ void GetAScale()
     void ModeMenu()
     {
         string modeSelectionPrompt = "Which mode would you like?";
-        string[] modeSelectionOptions = { "Major", "Minor" };
+        string[] modeSelectionOptions = { "Ionian/Major", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian/Minor", "Locrian" };
         Menu modesMenu = new Menu(modeSelectionPrompt, modeSelectionOptions);
         modesMenu.DisplayOptions();
         int selectedMode = modesMenu.Run();
@@ -76,13 +76,34 @@ void GetAScale()
         switch (selectedMode)
         {
             case 0:
-                Scales.MajorScale(selectedTonic);
+                Scales.IonianScale(selectedTonic);
                 ReadKey(true);
                 break;
             case 1:
-                Scales.MinorScale(selectedTonic);
+                Scales.DorianScale(selectedTonic);
                 ReadKey(true);
                 break;
+            case 2:
+                Scales.PhrygianScale(selectedTonic);
+                ReadKey(true);
+                break;
+            case 3:
+                Scales.LydianScale(selectedTonic);
+                ReadKey(true);
+                break;
+            case 4:
+                Scales.MixolydianScale(selectedTonic);
+                ReadKey(true);
+                break;
+            case 5:
+                Scales.AeolianScale(selectedTonic);
+                ReadKey(true);
+                break;
+            case 6:
+                Scales.LocrianScale(selectedTonic);
+                ReadKey(true);
+                break;
+
             default:
                 Console.WriteLine("Try again");
                 break;
