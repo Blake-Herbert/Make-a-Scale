@@ -8,6 +8,7 @@ MainMenu();
 void MainMenu()
 {
     string mainMenuPrompt = @"Welcome to MAKE-A-SCALE
+Use Arrow Keys to cycle through menus!
 ------------------------";
     string[] mainMenuOptions = { "Get a scale", "Make a scale", "About", "Exit" };
     Menu mainMenu = new Menu(mainMenuPrompt, mainMenuOptions);
@@ -48,30 +49,33 @@ void MainMenu()
 
 void GetAScale()
 {
-    int TonicMenu()
+
+    TonicMenu(ModeMenu());
+    MainMenu();
+
+    int ModeMenu()
+    {
+        string modeSelectionPrompt = "Which mode would you like?";
+        string[] modeSelectionOptions = { "Ionian/Major", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian/Minor", "Locrian" };
+
+        Menu modesMenu = new Menu(modeSelectionPrompt, modeSelectionOptions);
+        modesMenu.DisplayOptions();
+        int selectedMode = modesMenu.Run();
+
+        return selectedMode;
+    }
+
+    
+
+    void TonicMenu(int selectedMode)
     {
         string tonicMenuPrompt = "Select the starting note for your scale";
         string[] tonicMenuOptions = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
+
         Menu tonicMenu = new Menu(tonicMenuPrompt, tonicMenuOptions);
         tonicMenu.DisplayOptions();
         int selectedTonic = tonicMenu.Run();
 
-        return selectedTonic;
-
-    }
-
-    int selectedTonic = TonicMenu();
-
-    ModeMenu();
-
-
-    void ModeMenu()
-    {
-        string modeSelectionPrompt = "Which mode would you like?";
-        string[] modeSelectionOptions = { "Ionian/Major", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian/Minor", "Locrian" };
-        Menu modesMenu = new Menu(modeSelectionPrompt, modeSelectionOptions);
-        modesMenu.DisplayOptions();
-        int selectedMode = modesMenu.Run();
 
         switch (selectedMode)
         {
@@ -107,8 +111,9 @@ void GetAScale()
             default:
                 Console.WriteLine("Try again");
                 break;
+
         }
-        MainMenu();
+        
     }
 }
 
