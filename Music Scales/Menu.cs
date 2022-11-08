@@ -7,7 +7,7 @@ using static System.Console;
 
 namespace Music_Scales
 {
-    class Menu
+    public class Menu
     {
         private int SelectedIndex;
         private string[] Options;

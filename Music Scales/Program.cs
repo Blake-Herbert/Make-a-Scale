@@ -12,6 +12,7 @@ void MainMenu()
 Use Arrow Keys to cycle through menus!
 ------------------------";
     string[] mainMenuOptions = { "Timed Exercise", "Show Me the Scales", "Exit" };
+
     Menu mainMenu = new Menu(mainMenuPrompt, mainMenuOptions);
     mainMenu.DisplayOptions();
     int selectedMainMenuOption = mainMenu.Run();
@@ -43,6 +44,8 @@ void TimedChallenge()
 Are you ready to start?
 ----------------------------------";
     string[] Options = { "Begin", "Return to main menu" };
+
+
     Menu startChallengeMenu = new Menu(Prompt, Options);
     startChallengeMenu.DisplayOptions();
 
@@ -51,8 +54,7 @@ Are you ready to start?
     else
         Clear();
 
-    WriteLine("Question 1:");
-    
+    WriteLine("Working on this section...");
 
 
     ReadKey();
@@ -60,37 +62,51 @@ Are you ready to start?
 }
 
 
+
+
+
 void ShowMeScales()
 {
-
-    TonicMenu(ModeMenu());
+    showScale(ModeMenu(), StartingNoteMenu());
     MainMenu();
+
+
+
 
     int ModeMenu()
     {
-        string modeSelectionPrompt = "Which mode would you like?";
+        string modeSelectionPrompt = @"Which mode would you like?
+----------------------------------";
         string[] modeSelectionOptions = { "Ionian/Major", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian/Minor", "Locrian" };
+
 
         Menu modesMenu = new Menu(modeSelectionPrompt, modeSelectionOptions);
         modesMenu.DisplayOptions();
         int selectedMode = modesMenu.Run();
-        
+
 
         return selectedMode;
     }
 
-    
-    
 
-    void TonicMenu(int selectedMode)
+    int StartingNoteMenu()
     {
-        string tonicMenuPrompt = "Select the starting note for your scale";
-        string[] tonicMenuOptions = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
-        
+        string startingNotePrompt = @"Select the starting note for your scale
+----------------------------------";
+        string[] startingNoteMenuOptions = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
 
-        Menu tonicMenu = new Menu(tonicMenuPrompt, tonicMenuOptions);
-        tonicMenu.DisplayOptions();
-        int selectedTonic = tonicMenu.Run();
+
+        Menu startingNoteMenu = new Menu(startingNotePrompt, startingNoteMenuOptions);
+        startingNoteMenu.DisplayOptions();
+        int selectedStartingNote = startingNoteMenu.Run();
+
+        return selectedStartingNote;
+    }
+
+
+    void showScale(int selectedMode, int selectedTonic)
+    {
+
 
 
         switch (selectedMode)
@@ -125,7 +141,7 @@ void ShowMeScales()
                 break;
 
         }
-        
+
     }
 }
 
