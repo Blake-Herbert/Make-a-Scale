@@ -7,10 +7,11 @@ MainMenu();
 
 void MainMenu()
 {
-    string mainMenuPrompt = @"Welcome to MAKE-A-SCALE
+    Title = "Scale Practice Companion";
+    string mainMenuPrompt = @"Welcome to the Scale Practice Companion
 Use Arrow Keys to cycle through menus!
 ------------------------";
-    string[] mainMenuOptions = { "Get a scale", "Make a scale", "About", "Exit" };
+    string[] mainMenuOptions = { "Timed Exercise", "Show Me the Scales", "Exit" };
     Menu mainMenu = new Menu(mainMenuPrompt, mainMenuOptions);
     mainMenu.DisplayOptions();
     int selectedMainMenuOption = mainMenu.Run();
@@ -18,24 +19,15 @@ Use Arrow Keys to cycle through menus!
     switch (selectedMainMenuOption)
     {
         case 0:
-            GetAScale();
+            TimedChallenge();
             break;
         case 1:
-            Clear();
-            WriteLine("Still working on that!");
-            ReadKey();
-            MainMenu();
+            ShowMeScales();
             break;
         case 2:
             Clear();
-            WriteLine("I am Blake and I made this");
-            ReadKey();
-            MainMenu();
-            break;
-        case 3:
-            Clear();
             WriteLine("Press any key to exit");
-            ReadKey(true);
+            ReadKey();
             Environment.Exit(0);
             break;
         default:
@@ -44,10 +36,31 @@ Use Arrow Keys to cycle through menus!
 }
 
 
+void TimedChallenge()
+{
+    Clear();
+    string Prompt = @"This timed challenge will test your knowledge of scales and transposition.
+Are you ready to start?
+----------------------------------";
+    string[] Options = { "Begin", "Return to main menu" };
+    Menu startChallengeMenu = new Menu(Prompt, Options);
+    startChallengeMenu.DisplayOptions();
+
+    if (startChallengeMenu.Run() == 1)
+        MainMenu();
+    else
+        Clear();
+
+    WriteLine("Question 1:");
+    
 
 
+    ReadKey();
+    MainMenu();
+}
 
-void GetAScale()
+
+void ShowMeScales()
 {
 
     TonicMenu(ModeMenu());
@@ -61,16 +74,19 @@ void GetAScale()
         Menu modesMenu = new Menu(modeSelectionPrompt, modeSelectionOptions);
         modesMenu.DisplayOptions();
         int selectedMode = modesMenu.Run();
+        
 
         return selectedMode;
     }
 
+    
     
 
     void TonicMenu(int selectedMode)
     {
         string tonicMenuPrompt = "Select the starting note for your scale";
         string[] tonicMenuOptions = { "C ", "C#/Db ", "D ", "Eb/D# ", "E ", "F ", "F#/Gb ", "G ", "G#/Ab ", "A ", "Bb/A# ", "B " };
+        
 
         Menu tonicMenu = new Menu(tonicMenuPrompt, tonicMenuOptions);
         tonicMenu.DisplayOptions();
@@ -81,35 +97,31 @@ void GetAScale()
         {
             case 0:
                 Scales.IonianScale(selectedTonic);
-                ReadKey(true);
+                ReadKey();
                 break;
             case 1:
                 Scales.DorianScale(selectedTonic);
-                ReadKey(true);
+                ReadKey();
                 break;
             case 2:
                 Scales.PhrygianScale(selectedTonic);
-                ReadKey(true);
+                ReadKey();
                 break;
             case 3:
                 Scales.LydianScale(selectedTonic);
-                ReadKey(true);
+                ReadKey();
                 break;
             case 4:
                 Scales.MixolydianScale(selectedTonic);
-                ReadKey(true);
+                ReadKey();
                 break;
             case 5:
                 Scales.AeolianScale(selectedTonic);
-                ReadKey(true);
+                ReadKey();
                 break;
             case 6:
                 Scales.LocrianScale(selectedTonic);
-                ReadKey(true);
-                break;
-
-            default:
-                Console.WriteLine("Try again");
+                ReadKey();
                 break;
 
         }
