@@ -1,9 +1,14 @@
-﻿using System.Reflection;
+﻿using System.Net.Sockets;
+using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using Music_Scales;
 using static System.Console;
 
 
+
 MainMenu();
+
+
 
 void MainMenu()
 {
@@ -37,6 +42,10 @@ Use Arrow Keys to cycle through menus!
 }
 
 
+
+
+
+
 void TimedChallenge()
 {
     Clear();
@@ -53,8 +62,8 @@ Are you ready to start?
         MainMenu();
     else
         Clear();
-
-    WriteLine("Working on this section...");
+    WriteLine("Still working on it...");
+    
 
 
     ReadKey();
@@ -67,10 +76,8 @@ Are you ready to start?
 
 void ShowMeScales()
 {
-    showScale(ModeMenu(), StartingNoteMenu());
+    Scales.ScaleConstructor(ModeMenu(), StartingNoteMenu());
     MainMenu();
-
-
 
 
     int ModeMenu()
@@ -84,10 +91,8 @@ void ShowMeScales()
         modesMenu.DisplayOptions();
         int selectedMode = modesMenu.Run();
 
-
         return selectedMode;
     }
-
 
     int StartingNoteMenu()
     {
@@ -102,48 +107,15 @@ void ShowMeScales()
 
         return selectedStartingNote;
     }
-
-
-    void showScale(int selectedMode, int selectedTonic)
-    {
-
-
-
-        switch (selectedMode)
-        {
-            case 0:
-                Scales.IonianScale(selectedTonic);
-                ReadKey();
-                break;
-            case 1:
-                Scales.DorianScale(selectedTonic);
-                ReadKey();
-                break;
-            case 2:
-                Scales.PhrygianScale(selectedTonic);
-                ReadKey();
-                break;
-            case 3:
-                Scales.LydianScale(selectedTonic);
-                ReadKey();
-                break;
-            case 4:
-                Scales.MixolydianScale(selectedTonic);
-                ReadKey();
-                break;
-            case 5:
-                Scales.AeolianScale(selectedTonic);
-                ReadKey();
-                break;
-            case 6:
-                Scales.LocrianScale(selectedTonic);
-                ReadKey();
-                break;
-
-        }
-
-    }
 }
 
-Console.WriteLine();
-Console.WriteLine("__________________________________");
+    
+
+    
+
+
+    
+
+
+    
+ 

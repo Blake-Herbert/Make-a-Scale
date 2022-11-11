@@ -12,108 +12,51 @@ namespace Music_Scales
     {
         private static string[] allDiatonicNotes = { "C", "C#/Db", "D", "Eb/D#", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "Bb/A#", "B",
                                                      "C", "C#/Db", "D", "Eb/D#", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "Bb/A#", "B" };
+        enum Mode
+        {
+            Ionian,
+            Dorian,
+            Phrygian,
+            Lydian,
+            Mixolydian,
+            Aeolian,
+            Locrian
+        }
 
 
-        
-        
-        public static void IonianScale(int selectedStartingNote)
+        public static void ScaleConstructor(int selectedStartingNote, int selectedMode)
         {
             Clear();
-            WriteLine(allDiatonicNotes[selectedStartingNote] + " Major / Ionian Scale:");
+            Mode mode = (Mode)selectedMode;
+            WriteLine(allDiatonicNotes[selectedStartingNote] + " " + mode + @" Scale:
+----------------------------------");
 
             int[] ionianScaleIntervals = { 0, 2, 4, 5, 7, 9, 11, 12 };
-            foreach (int interval in ionianScaleIntervals)
-            {
-                Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
-            }
-        }
-
-
-
-        public static void DorianScale(int selectedStartingNote)
-        {
-            Clear();
-            WriteLine(allDiatonicNotes[selectedStartingNote] + " Dorian Scale:");
-
             int[] dorianScaleIntervals = { 0, 2, 3, 5, 7, 9, 10, 12 };
-            foreach (int interval in dorianScaleIntervals)
-            {
-                Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
-            }
-        }
-
-
-
-
-        public static void PhrygianScale(int selectedStartingNote)
-        {
-            Clear();
-            WriteLine( allDiatonicNotes[selectedStartingNote] + " Phrygian Scale:");
-
             int[] phrygianScaleIntervals = { 0, 1, 3, 5, 7, 8, 10, 12 };
-            foreach (int interval in phrygianScaleIntervals)
-            {
-                Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
-            }
-        }
-
-
-
-        public static void LydianScale(int selectedStartingNote)
-        {
-            Clear();
-            WriteLine( allDiatonicNotes[selectedStartingNote] + " Lydian Scale:");
-
             int[] lydianScaleIntervals = { 0, 2, 4, 6, 7, 9, 11, 12 };
-            foreach (int interval in lydianScaleIntervals)
-            {
-                Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
-            }
-        }
-
-
-
-        public static void MixolydianScale(int selectedStartingNote)
-        {
-            Clear();
-            WriteLine(allDiatonicNotes[selectedStartingNote] + " Mixolydian Scale:");
-
             int[] mixolydianScaleIntervals = { 0, 2, 4, 5, 7, 9, 10, 12 };
-            foreach (int interval in mixolydianScaleIntervals)
-            {
-                Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
-            }
-        }
-
-
-
-        public static void AeolianScale(int selectedStartingNote)
-        {
-            Clear();
-            WriteLine( allDiatonicNotes[selectedStartingNote] + " Minor / Aeolian Scale:");
-
-            int[] minorScaleIntervals = { 0, 2, 3, 5, 7, 8, 10, 12 };
-            foreach (int interval in minorScaleIntervals)
-            {
-                Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
-            }
-        }
-
-
-
-        public static void LocrianScale(int selectedStartingNote)
-        {
-            Clear();
-            WriteLine(allDiatonicNotes[selectedStartingNote] + " Locrian Scale:");
-
+            int[] aeolianScaleIntervals = { 0, 2, 3, 5, 7, 8, 10, 12 };
             int[] locrianScaleIntervals = { 0, 1, 3, 5, 6, 8, 10, 12 };
-            foreach (int interval in locrianScaleIntervals)
+
+
+            int[][] modeArray = new int[7][];
+            modeArray[0] = ionianScaleIntervals;
+            modeArray[1] = dorianScaleIntervals;
+            modeArray[2] = phrygianScaleIntervals;
+            modeArray[3] = lydianScaleIntervals;
+            modeArray[4] = mixolydianScaleIntervals;
+            modeArray[5] = aeolianScaleIntervals;
+            modeArray[6] = locrianScaleIntervals;
+
+            foreach (int interval in modeArray[selectedMode])
             {
                 Write("(" + allDiatonicNotes[selectedStartingNote + interval] + ") ");
             }
+
+            ReadKey();
+
         }
-
-
-
     }
 }
+
